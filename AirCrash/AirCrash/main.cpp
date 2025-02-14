@@ -1,7 +1,8 @@
 /// <summary>
 /// simple game loop for SFML[2.6.1]
 /// 
-/// author Pete Lowe May 2022
+/// author Jake Dowd Gilligan 2025
+///
 /// you need to change the above line or lose marks
 /// </summary>
 
