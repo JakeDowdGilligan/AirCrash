@@ -11,6 +11,9 @@
 /// </summary>
 #include <SFML/Graphics.hpp>
 
+const int HEIGHT = 800;//screen height 
+const int WIDTH = 1000;//screen width
+
 class Game
 {
 public:
@@ -30,6 +33,10 @@ private:
 	
 	void setupFontAndText();
 	void setupSprite();
+	void setupSky();
+
+	sf::Texture m_skyTexture;
+	sf::Sprite m_skySprite;
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message

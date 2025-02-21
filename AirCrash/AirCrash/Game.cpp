@@ -15,7 +15,7 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ WIDTH, HEIGHT, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
@@ -117,9 +117,10 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
+	m_window.draw(m_skySprite);
 	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
 	m_window.display();
+	
 }
 
 /// <summary>
@@ -147,11 +148,17 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
+	setupSky();
+
+}
+
+void Game::setupSky()
+{
+	if (!m_skyTexture.loadFromFile("ASSETS\\IMAGES\\sky.jpg"))
 	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
+		std::cout << "could not load file for background" << std::endl;
 	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
+	m_skyTexture.setRepeated(true);
+	m_skySprite.setTexture(m_skyTexture);
+	m_skySprite.setTextureRect(sf::IntRect{ 0,0,WIDTH,HEIGHT });
 }
