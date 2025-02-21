@@ -36,6 +36,8 @@ private:
 	void setupSky();
 	void setupPlanes();
 
+	void movePlanes();
+
 	sf::Texture m_skyTexture;
 	sf::Sprite m_skySprite;
 
@@ -46,8 +48,14 @@ private:
 
 	sf::Texture m_planesTexture;//all planes texture 
 	sf::Sprite m_bigPlaneSprite;//big plane sprite 
-	sf::Vector2f m_bigPlaneVelocity{ 1.0f,1.0f };//big plane velocity
+	sf::Vector2f m_bigPlaneVelocity{ 1.0f,-1.0f };//big plane velocity
 	sf::Vector2f m_bigPlaneLocation{ 200.0f,200.0f };//big plane location 
+
+	sf::Sprite m_smallPlaneSprite;//small plane sprite 
+	sf::Vector2f m_smallPlaneVelocity{ -2.0f,2.0f };//small plane velocity
+	sf::Vector2f m_smallPlaneLocation{ 600.0f,0.0f };//small plane location 
+
+
 	float m_bigHeading{ 45.0f };//heading of big plane 
 	float m_smallHeading{ 225.0f };//heading of small plane
 
