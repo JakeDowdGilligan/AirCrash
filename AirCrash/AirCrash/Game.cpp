@@ -15,11 +15,12 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ WIDTH, HEIGHT, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ WIDTH, HEIGHT, 32U }, "AirCrash by Jake" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
+	setupPlanes(); //load planes 
 }
 
 /// <summary>
@@ -118,7 +119,7 @@ void Game::render()
 {
 	m_window.clear(sf::Color::White);
 	m_window.draw(m_skySprite);
-	m_window.draw(m_welcomeMessage);
+	m_window.draw(m_bigPlaneSprite);
 	m_window.display();
 	
 }
@@ -132,14 +133,6 @@ void Game::setupFontAndText()
 	{
 		std::cout << "problem loading arial black font" << std::endl;
 	}
-	m_welcomeMessage.setFont(m_ArialBlackfont);
-	m_welcomeMessage.setString("SFML Game");
-	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(40.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(80U);
-	m_welcomeMessage.setOutlineColor(sf::Color::Red);
-	m_welcomeMessage.setFillColor(sf::Color::Black);
-	m_welcomeMessage.setOutlineThickness(3.0f);
 
 }
 
@@ -161,4 +154,20 @@ void Game::setupSky()
 	m_skyTexture.setRepeated(true);
 	m_skySprite.setTexture(m_skyTexture);
 	m_skySprite.setTextureRect(sf::IntRect{ 0,0,WIDTH,HEIGHT });
+}
+
+void Game::setupPlanes()
+{
+	sf::IntRect bigRectangle{ 3,11,104,93 }; //area of image for big plane 
+
+	if (!m_planesTexture.loadFromFile("ASSETS\\IMAGES\\planes.png"))
+	{
+		std::cout << "could not load file for planes" << std::endl;
+	}
+
+	m_bigPlaneSprite.setTexture(m_planesTexture);
+	m_bigPlaneSprite.setTextureRect(bigRectangle);
+	m_bigPlaneSprite.setOrigin(bigRectangle.width / 2.0f, bigRectangle.height / 2.0f);
+	m_bigPlaneSprite.setPosition(m_bigPlaneLocation);
+	m_bigPlaneSprite.setRotation(m_bigHeading);
 }

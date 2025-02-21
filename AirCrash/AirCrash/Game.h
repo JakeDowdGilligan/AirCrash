@@ -34,15 +34,25 @@ private:
 	void setupFontAndText();
 	void setupSprite();
 	void setupSky();
+	void setupPlanes();
 
 	sf::Texture m_skyTexture;
 	sf::Sprite m_skySprite;
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
-	sf::Text m_welcomeMessage; // text used for message on screen
+	
 	sf::Texture m_logoTexture; // texture used for sfml logo
-	sf::Sprite m_logoSprite; // sprite used for sfml logo
+
+	sf::Texture m_planesTexture;//all planes texture 
+	sf::Sprite m_bigPlaneSprite;//big plane sprite 
+	sf::Vector2f m_bigPlaneVelocity{ 1.0f,1.0f };//big plane velocity
+	sf::Vector2f m_bigPlaneLocation{ 200.0f,200.0f };//big plane location 
+	float m_bigHeading{ 45.0f };//heading of big plane 
+	float m_smallHeading{ 225.0f };//heading of small plane
+
+	
+	
 	bool m_exitGame; // control exiting game
 
 };
