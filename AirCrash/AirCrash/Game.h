@@ -10,6 +10,8 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 const int HEIGHT = 800;//screen height 
 const int WIDTH = 1000;//screen width
@@ -30,6 +32,9 @@ private:
 	void processKeys(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
+
+	void processMouseDown(sf::Event t_event); //moving the plane up via player control
+	void processMouseUp(sf::Event t_event); //moving the player down via player control
 	
 	void setupFontAndText();
 	void setupSprite();
@@ -59,6 +64,8 @@ private:
 
 	float m_bigHeading{ 45.0f };//heading of big plane 
 	float m_smallHeading{ 225.0f };//heading of small plane
+
+	sf::Vector2f m_mouseDown;//location of the mouse down click 
 
 	
 	
