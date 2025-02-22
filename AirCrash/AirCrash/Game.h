@@ -43,6 +43,7 @@ private:
 
 	void movePlanes();
 	void keepOnScreen(sf::Vector2f &t_location);
+	void drawPlane(sf::Sprite& t_plane);
 
 	sf::Texture m_skyTexture;
 	sf::Sprite m_skySprite;
@@ -70,6 +71,7 @@ private:
 	
 	
 	bool m_exitGame; // control exiting game
+	bool m_debugging{ false }; // is debug mode on 
 
 };
 
